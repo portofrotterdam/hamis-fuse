@@ -4,8 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.portofrotterdam.hamis</groupId>
+    <groupId>com.portofrotterdam.hamis.fuse</groupId>
     <artifactId>hamis-fuse</artifactId>
+    <packaging>pom</packaging>
     <version>1.0.0-SNAPSHOT</version>
 
     <build>
@@ -20,13 +21,29 @@
             </plugin>
         </plugins>
     </build>
+    <modules>
+        <module>core</module>
+        <module>swing</module>
+    </modules>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.eclipse</groupId>
-            <artifactId>swt</artifactId>
-            <version>3.3.0-v3346</version>
-        </dependency>
-    </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.portofrotterdam.hamis.fuse</groupId>
+                <artifactId>core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.portofrotterdam.hamis.fuse</groupId>
+                <artifactId>swing</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse</groupId>
+                <artifactId>swt</artifactId>
+                <version>3.3.0-v3346</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>

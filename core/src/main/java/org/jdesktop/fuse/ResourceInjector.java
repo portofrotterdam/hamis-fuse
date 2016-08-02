@@ -225,11 +225,11 @@ public final class ResourceInjector {
     }
     
     public void injectFromSuper(Object component) {
-        inject(false, FuseUtilities.getCallingClass(0), component);
+//        inject(false, FuseUtilities.getCallingClass(0), component);
     }
-    
+
     public void injectFromSuper(boolean populateHierarchy, Object component) {
-        inject(populateHierarchy, FuseUtilities.getCallingClass(0), component);
+//        inject(populateHierarchy, FuseUtilities.getCallingClass(0), component);
     }
     
     /**

@@ -29,18 +29,41 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.jdesktop.fuse;
+package org.jdesktop.fuse.swing;
 
-/**
- * @author Daniel Spiewak
- */
-class HiveStandardInjectionProvider<T> extends HiveInjectionProvider<T> {
-    
-    HiveStandardInjectionProvider() {
+import java.awt.Insets;
+import java.util.Map;
+
+import org.jdesktop.fuse.TypeLoader;
+import org.jdesktop.fuse.TypeLoadingException;
+
+class InsetsTypeLoader extends TypeLoader<Insets> {
+    InsetsTypeLoader() {
+        super(Insets.class);
     }
-
+    
     @Override
-    public void inject(Object key, boolean populateHierarchy, T instance) {
-        ResourceInjector.get(key).inject(populateHierarchy, instance);
+    public Insets loadType(String name, String value, Class<?> resolver, Map<String, Object> properties) {
+        if (value != null || !value.matches("(\\s*\\d+\\s*,){3}\\s*\\d+\\s*")) {
+            String[] parts = value.split(",");
+            if (parts.length < 4) {
+                throw new TypeLoadingException("Theme resource " + name +
+                                                 " is not a valid insets.");
+            }
+            
+            try {
+                return new Insets(Integer.parseInt(parts[0].trim()),
+                                  Integer.parseInt(parts[1].trim()),
+                                  Integer.parseInt(parts[2].trim()),
+                                  Integer.parseInt(parts[3].trim()));
+            } catch (NumberFormatException e) {
+                throw new TypeLoadingException("Theme resource " + name +
+                                                 " is not a valid insets.", e);
+            }
+        }
+        
+        throw new TypeLoadingException("Theme resource " + name +
+                                         " is not a valid insets. Format must be " +
+                                         "\"top, left, bottom, right\".");
     }
 }
