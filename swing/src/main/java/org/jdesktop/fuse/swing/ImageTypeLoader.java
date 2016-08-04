@@ -1,21 +1,21 @@
 /**
  * Copyright (c) 2006, Sun Microsystems, Inc
  * All rights reserved.
- * 
+ * <p>
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
- * 
- *   * Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *   * Redistributions in binary form must reproduce the above
- *     copyright notice, this list of conditions and the following 
- *     disclaimer in the documentation and/or other materials provided 
- *     with the distribution.
- *   * Neither the name of the Fuse project nor the names of its
- *     contributors may be used to endorse or promote products derived 
- *     from this software without specific prior written permission.
- * 
+ * <p>
+ * * Redistributions of source code must retain the above copyright
+ * notice, this list of conditions and the following disclaimer.
+ * * Redistributions in binary form must reproduce the above
+ * copyright notice, this list of conditions and the following
+ * disclaimer in the documentation and/or other materials provided
+ * with the distribution.
+ * * Neither the name of the Fuse project nor the names of its
+ * contributors may be used to endorse or promote products derived
+ * from this software without specific prior written permission.
+ * <p>
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -33,7 +33,6 @@ package org.jdesktop.fuse.swing;
 
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
@@ -42,18 +41,17 @@ import org.jdesktop.fuse.TypeLoader;
 import org.jdesktop.fuse.TypeLoadingException;
 
 class ImageTypeLoader extends TypeLoader<Image> {
+
     ImageTypeLoader() {
         super(Image.class, BufferedImage.class);
     }
-    
+
     @Override
     public Image loadType(String name, String value, Class<?> resolver, Map<String, Object> properties) {
         try {
             return ImageIO.read(resolver.getResourceAsStream(value));
-        } catch (IOException e) {
-            throw new TypeLoadingException("Theme resource " + name + " could not" +
-                                             " be loaded as an image.", e);
+        } catch (final Exception e) {
+            throw new TypeLoadingException(String.format("Error while loading image '%s:%s' : %s", name, value, e));
         }
     }
-
 }
