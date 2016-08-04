@@ -7,7 +7,7 @@
     <groupId>com.portofrotterdam.hamis.fuse</groupId>
     <artifactId>hamis-fuse</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <build>
         <plugins>
@@ -30,18 +30,13 @@
         <dependencies>
             <dependency>
                 <groupId>com.portofrotterdam.hamis.fuse</groupId>
-                <artifactId>core</artifactId>
+                <artifactId>hamis-fuse-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.portofrotterdam.hamis.fuse</groupId>
-                <artifactId>swing</artifactId>
+                <artifactId>hamis-fuse-swing</artifactId>
                 <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse</groupId>
-                <artifactId>swt</artifactId>
-                <version>3.3.0-v3346</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

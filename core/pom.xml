@@ -5,11 +5,11 @@
     <parent>
         <artifactId>hamis-fuse</artifactId>
         <groupId>com.portofrotterdam.hamis.fuse</groupId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>core</artifactId>
+    <artifactId>hamis-fuse-core</artifactId>
 
 
 </project>
