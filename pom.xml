@@ -9,6 +9,20 @@
     <packaging>pom</packaging>
     <version>1.0.1</version>
 
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>Release repository</name>
+            <url>http://nexus.hamis.nl/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <uniqueVersion>true</uniqueVersion>
+            <name>Maven repository for snapshots</name>
+            <url>http://nexus.hamis.nl/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <build>
         <plugins>
             <plugin>
